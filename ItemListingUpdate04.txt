@@ -1,0 +1,37 @@
+5. Reporting:
+   -  Libraries: Utilize libraries to generate reports showing the marketplace's sales, purchase history, and inventory:
+
+Update Details.
+Let's break down the code and explain its components:
+
+1. **MarketplaceReports Library**:
+    - Defines two structs `SalesReport` and `PurchaseHistory` to hold information about sales and purchase history.
+    - Contains two functions:
+        - `generateSalesReport`: Generates a sales report by fetching item details from an `ItemListing` contract
+           based on the given `itemListingAddress`.
+        - `generatePurchaseHistory`: Generates purchase history by fetching item details for a specific buyer 
+           from an `ItemListing` contract.
+
+2. **Ownable Contract**:
+    - Defines an `owner` variable and a `onlyOwner` modifier to restrict certain functions to only be executed by the contract owner.
+
+3. **ItemListing Contract**:
+    - Inherited from the `Ownable` contract.
+    - Defines a `MarketplaceReports` library usage on the contract level.
+    - Contains a `listingFee` variable, a mapping `sellerItems` to store items listed by each seller, and an `Item` struct
+      to define item properties.
+    - Events are defined for listing, editing, deleting, and purchasing items.
+    - Constructor sets the `listingFee` upon contract deployment.
+    - Functions include:
+        - `listItem`: Allows a seller to list a new item by paying the listing fee. Emits an event for the listed item.
+        - `editItem`: Allows the owner to edit an existing item's details.
+        - `deleteItem`: Allows the owner to delete an existing item from the listing.
+        - `purchaseItem`: Allows a buyer to purchase an item by sending the required funds. Emits an event for the purchased item.
+        - `getSellerItemCount`: Returns the total number of items listed by a specific seller.
+        - `getItemDetails`: Returns the details of a specific item listed by a seller.
+        - `generateSalesReport`: Calls the `generateSalesReport` function from the `MarketplaceReports` library.
+        - `generatePurchaseHistory`: Calls the `generatePurchaseHistory` function from the `MarketplaceReports` library.
+
+In summary, this code implements a marketplace smart contract where sellers can list items, buyers can purchase items, and 
+sales/purchase history can be generated and accessed. The contract includes functionalities to interact with items, manage
+listings, and provide reports on sales and purchase history.
