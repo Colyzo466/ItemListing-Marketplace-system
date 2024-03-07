@@ -6,7 +6,7 @@ Features:
    - Structs: Use structs to define an item with attributes like name, description, price, and quantity.
    - Mappings: Implement mappings to manage the relationship between sellers and their listed items.
 
-Solution:
+Update Details:
 
 This Solidity code defines a smart contract called `ItemListing` that allows users to list and retrieve details of items for sale. Here's a breakdown of the code:
 
