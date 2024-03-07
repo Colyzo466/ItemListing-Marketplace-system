@@ -1,0 +1,43 @@
+4. Inheritance and Data Locations:
+   - Inheritance: Utilize inheritance to create a hierarchy of contracts, if needed.
+   - Data Locations: Understand and apply the concepts of storage, memory, and stack within the contract.
+
+   
+In this updated code:
+1. We created a new contract `Ownable` to handle the ownership functionality, and `ItemListing` now inherits
+   from `Ownable` contract to reuse the ownership logic.
+2. The `onlyOwner` modifier is moved to the `Ownable` contract for reuse.
+3. Corrected the pragma to `^0.8.17` for solidity version compatibility.
+4. The appropriate data locations (storage, memory) are used based on whether the data should persist in 
+    the blockchain or only during execution.
+
+Update details:
+
+1. **`Ownable` Contract**:
+   - This contract defines an `owner` address variable and a `onlyOwner` modifier.
+   - The `owner` variable is set to the address that deploys the contract in the constructor.
+   - The `onlyOwner` modifier restricts certain functions so that only the `owner` can execute them.
+
+2. **`ItemListing` Contract** (Inherits from `Ownable`):
+   - This contract manages the listing, editing, deleting, and purchasing of items.
+   - It includes a `listingFee` variable, a mapping `sellerItems` to store items listed by sellers, and a `Item` struct 
+     to define the properties of an item.
+   - Events are defined to log actions like listing an item, editing an item, deleting an item, and purchasing an item.
+   - The constructor initializes the `listingFee` based on the parameter passed.
+   - Functions are defined to:
+     - `listItem`: Allows a seller to list an item by paying the listing fee.
+     - `editItem`: Allows the owner to edit an item.
+     - `deleteItem`: Allows the owner to delete an item.
+     - `purchaseItem`: Allows a buyer to purchase an item by sending the required funds.
+     - `getSellerItemCount`: Returns the count of items listed by a seller.
+     - `getItemDetails`: Returns the details of a specific item listed by a seller.
+
+3. **Key Points**:
+   - The contract structure follows the Ownable pattern to restrict access to certain functions.
+   - Items are stored per seller in the `sellerItems` mapping.
+   - Various checks are in place to ensure valid operations, like checking the item ID, available quantity, sufficient funds, etc.
+   - Events are emitted to provide transparency and track actions on the blockchain.
+   - The `msg.sender` and function parameters are used to manage permissions and data flow within the contract.
+
+Overall, this code showcases a simple implementation of managing items on the blockchain, where ownership and access control
+are crucial aspects. It demonstrates how smart contracts can automate business logic and interactions in a decentralized manner.
