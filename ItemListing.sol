@@ -31,11 +31,3 @@ contract ItemListing {
     }
 }
 
-// 1. Item Management:
-
-/* Utilize solidity to create a contract that manages the listing of items. define
-   various types such as boolean,address, integers, string and bytes to represent 
-   item attributes. use structs to define an item with attributes like 
-   name, description, price and quantity. implement mappings to manage
-   the relationship between sellers and their listed item.
- */
